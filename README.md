@@ -7,7 +7,7 @@ Cd into the src directory
 
 then just run `Make <your file name>`
 
-`$ make main
+`$ make main`
 
 build main.cpp
 

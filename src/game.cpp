@@ -222,7 +222,7 @@ void Game::display() {
   glDrawArrays(GL_TRIANGLES, 0, NUM_VERTICES);
 
 
-  // Brick::translation_handle = glGetUniformLocation(program, "position");
+  Brick::translation_handle = glGetUniformLocation(program, "position");
 
   // for(int i = 0; i < bricks.length; i++) {
   //   bricks[i].display();

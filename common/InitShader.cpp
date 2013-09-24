@@ -26,12 +26,12 @@ namespace Angel {
   // Create a GLSL program object from vertex and fragment shader files
   GLuint InitShader(const char* vShaderFile, const char* fShaderFile) {
     struct Shader {
-  	const char*  filename;
-  	GLenum       type;
-  	GLchar*      source;
+    	const char*  filename;
+    	GLenum       type;
+    	GLchar*      source;
     } shaders[2] = {
-    	{ vShaderFile, GL_VERTEX_SHADER, NULL },
-    	{ fShaderFile, GL_FRAGMENT_SHADER, NULL }};
+    	{vShaderFile, GL_VERTEX_SHADER,   NULL},
+    	{fShaderFile, GL_FRAGMENT_SHADER, NULL}};
 
     GLuint program = glCreateProgram();
       
@@ -47,11 +47,11 @@ namespace Angel {
     	glShaderSource(shader, 1, (const GLchar**) &s.source, NULL);
     	glCompileShader(shader);
 
-    	GLint  compiled;
+    	GLint compiled;
     	glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
     	if(!compiled) {
   	    std::cerr << s.filename << " failed to compile:" << std::endl;
-  	    GLint  logSize;
+  	    GLint logSize;
   	    glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logSize);
   	    char* logMsg = new char[logSize];
   	    glGetShaderInfoLog(shader, logSize, NULL, logMsg);

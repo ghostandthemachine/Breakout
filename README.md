@@ -9,7 +9,7 @@ then just run `Make <your file name>`
 
 `$ make main`
 
-build main.cpp
+builds main.cpp
 
 then just run as usual
 

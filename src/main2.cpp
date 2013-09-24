@@ -1,7 +1,9 @@
 // Two-Dimensional Sierpinski Gasket       
 // Generated using randomly selected vertices and bisection
 
-#include "Angel.h"
+#include "../include/Angel.h"
+
+#include "node.h"
 
 const int NumPoints = 5000;
 
@@ -80,20 +82,20 @@ void init(){
 
 //----------------------------------------------------------------------------
 
-void display() {
-    glClear( GL_COLOR_BUFFER_BIT );     // clear the window
-    glDrawArrays( GL_POINTS, 0, NumPoints );    // draw the points
-    glFlush();
+void render() {
+  glClear( GL_COLOR_BUFFER_BIT );     // clear the window
+  glDrawArrays( GL_POINTS, 0, NumPoints );    // draw the points
+  glFlush();
 }
 
 //----------------------------------------------------------------------------
 
 void keyboard(unsigned char key, int x, int y) {
-    switch ( key ) {
-    case 033:
-        exit( EXIT_SUCCESS );
-        break;
-    }
+  switch ( key ) {
+  case 033:
+      exit( EXIT_SUCCESS );
+      break;
+  }
 }
 
 //----------------------------------------------------------------------------
@@ -110,8 +112,9 @@ int main(int argc, char **argv){
   glutCreateWindow( "Sierpinski Gasket" );
   init();
 
-  glutDisplayFunc( display );
-  glutKeyboardFunc( keyboard );
+  glutDisplayFunc(render);
+  glutKeyboardFunc(keyboard);
+
 
   glutMainLoop();
   return 0;

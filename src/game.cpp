@@ -224,9 +224,9 @@ void Game::display() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glDrawArrays(GL_TRIANGLES, 0, NUM_VERTICES);
 
-  for(int i = 0; i < bricks.length; i++) {
-    bricks[i].display();
-  }
+  // for(int i = 0; i < bricks.length; i++) {
+  //   bricks[i].display();
+  // }
 
   glutSwapBuffers();
 }

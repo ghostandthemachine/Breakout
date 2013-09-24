@@ -6,8 +6,8 @@ COMMON=../common/initShader.cpp \
 
 OPTIONS=$(GCC_OPTIONS) $(GL_OPTIONS) $(COMMON)
 
-breakout: breakout.o game.o
-	g++ $(OPTIONS) -g -o breakout breakout.o game.o
+breakout: breakout.o geometry.o game.o brick.o
+	g++ $(OPTIONS) -g -o breakout breakout.o geometry.o game.o brick.o
 
 breakout.o: breakout.cpp game.h
 	g++ $(GCC_OPTIONS) -g -c breakout.cpp
@@ -17,9 +17,6 @@ game.o: game.h game.cpp
 
 paddle.o: paddle.h paddle.cpp
 	g++ $(GCC_OPTIONS) -g -c paddle.cpp
-
-scene.o: scene.h scene.cpp
-	g++ $(GCC_OPTIONS) -g -c scene.cpp
 
 geometry.o: geometry.h geometry.cpp
 	g++ $(GCC_OPTIONS) -g -c geometry.cpp
@@ -36,4 +33,3 @@ clean:
 
 .cpp: 
 	g++ $@.cpp ../common/initShader.cpp $(OPTIONS) -o $@
-

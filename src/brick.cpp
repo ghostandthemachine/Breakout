@@ -43,12 +43,25 @@ void Brick::quad(int a, int b, int c, int d) {
   Brick::brick_points.push_back(Brick::brick_vertices[d]);
 }
 
+
+Brick::Brick() {
+  translation = vec3(0.0, 0.0, 0.0);
+}
+
+Brick::Brick(float x, float y, float z) {
+  translation = vec3(x, y, z);
+}
+
+Brick::~Brick() {
+
+}
+
 void Brick::display() {
   // Pass the translation to the vertex buffer
   // The handle is referring to the VAO for this class of object
   // position is some vec2 representing the x,y of this object
-  glUniform2fv(some_uniform_handle, &this->position); // or use
-  glUniform2f(some_uniform_handle, this->x, this->y); 
+  // glUniform2fv(some_uniform_handle, &this->position); // or use
+  // glUniform2f(some_uniform_handle, this->x, this->y); 
   // if you just want to store an x and y
-  glDrawArrays(GL_TRIANGLES, 0, this->num_verticies);
+  glDrawArrays(GL_TRIANGLES, 0, 6);
 }

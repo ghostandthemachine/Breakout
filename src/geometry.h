@@ -16,9 +16,7 @@ class Geometry {
   public:
     Geometry();
     virtual ~Geometry();
-
     virtual void display() = 0;
-    virtual void init() = 0;
 
     point3 translation;
 };

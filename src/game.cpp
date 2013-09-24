@@ -6,9 +6,11 @@
 
 #include "game.h"
 
-
 #include "Angel.h"
+#include "brick.h"
 
+std::vector<point4> Brick::brick_points;
+std::vector<color4> Brick::brick_colors;
 
 typedef Angel::vec4 color4;
 typedef Angel::vec4 point4;
@@ -169,26 +171,21 @@ void Game::initGame() {
   ///////////////////////////////////////////////////////////////////////////  
   // Bricks /////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////  
-  // int point_size = Brick::brick_points.size();
-  // int color_size = Brick::brick_colors.size();
+  int point_size = Brick::brick_points.size();
+  int color_size = Brick::brick_colors.size();
 
-  // GLuint brick_vbo;
-  // glGenBuffers(1, &brick_vbo);
+  GLuint brick_vbo;
+  glGenBuffers(1, &brick_vbo);
   
-  // glBindBuffer(GL_ARRAY_BUFFER, brick_vbo);
-  // glBufferData(GL_ARRAY_BUFFER,
-  //              point_size + color_size,
-  //              NULL,
-  //              GL_STATIC_DRAW);
+  glBindBuffer(GL_ARRAY_BUFFER, brick_vbo);
+  glBufferData(GL_ARRAY_BUFFER,
+               point_size + color_size,
+               NULL,
+               GL_STATIC_DRAW);
 
-  // glBufferSubData(GL_ARRAY_BUFFER, 0, point_size, Brick::brick_points);
-  // glBufferSubData(GL_ARRAY_BUFFER, point_size, color_size, Brick::brick_colors);
-
-  // // Load shaders and use the resulting shader program
-  // brick_program = InitShader("vbrick.glsl", "fbrick.glsl");
-  // glUseProgram(brick_program);
-
-///////////////////////////////////////////////////////////////////////////  
+  glBufferSubData(GL_ARRAY_BUFFER, 0, point_size, Brick::brick_points[0]);
+  glBufferSubData(GL_ARRAY_BUFFER, point_size, color_size, Brick::brick_colors[0]);
+  ///////////////////////////////////////////////////////////////////////////  
 
 
 }
@@ -223,6 +220,9 @@ void Game::display() {
   // display code here...
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glDrawArrays(GL_TRIANGLES, 0, NUM_VERTICES);
+
+
+  // Brick::translation_handle = glGetUniformLocation(program, "position");
 
   // for(int i = 0; i < bricks.length; i++) {
   //   bricks[i].display();
